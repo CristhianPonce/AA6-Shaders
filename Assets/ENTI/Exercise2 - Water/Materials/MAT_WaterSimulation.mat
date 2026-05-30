@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fade_Speed: 0.56
+    - _Fade_Speed: 0.05
     - _PlayerHardness: 0.55
     - _PlayerRadius: 2
     - _Simulation_Delta_Time: 0.016

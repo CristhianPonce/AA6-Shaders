@@ -198,21 +198,9 @@ public class RuntimeWaterFlowController : MonoBehaviour
 
     private void PublishFlowmap()
     {
-        Bounds waterBounds = waterRenderer.bounds;
-
-        Vector3 simulationCenter = waterBounds.center;
-
-        Vector3 simulationSize = new Vector3(
-            Mathf.Max(waterBounds.size.x, 0.001f),
-            1f,
-            Mathf.Max(waterBounds.size.z, 0.001f)
-        );
-
         waterRenderer.GetPropertyBlock(waterPropertyBlock);
 
         waterPropertyBlock.SetTexture(FlowmapId, previousFrame);
-        waterPropertyBlock.SetVector(SimulationCenterId, simulationCenter);
-        waterPropertyBlock.SetVector(SimulationSizeId, simulationSize);
 
         waterRenderer.SetPropertyBlock(waterPropertyBlock);
 
