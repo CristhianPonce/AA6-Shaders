@@ -1,72 +1,65 @@
 Shader "Custom/StencilWrite"
 {
-    Properties { }
-
     SubShader
     {
         Tags
         {
-            "RenderType"     = "Opaque"
+            "RenderType" = "Opaque"
             "RenderPipeline" = "UniversalPipeline"
-            "Queue"          = "Geometry-1"
+            "Queue" = "Geometry-1"
         }
 
         Pass
         {
             Name "StencilWrite"
 
+            Tags
+            {
+                "LightMode" = "UniversalForward"
+            }
+
+            ZWrite Off
+            ZTest Always
             ColorMask 0
-            ZWrite    Off
-            ZTest     LEqual
 
             Stencil
             {
-                Ref   1
-                Comp  Always
-                Pass  Replace
+                Ref 1
+                Comp Always
+                Pass Replace
+                Fail Keep
                 ZFail Keep
             }
 
             HLSLPROGRAM
-            #pragma vertex   Vert
-            #pragma fragment Frag
-
-            #pragma multi_compile_instancing
+            #pragma vertex vert
+            #pragma fragment frag
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
-            CBUFFER_START(UnityPerMaterial)
-            CBUFFER_END
 
             struct Attributes
             {
                 float4 positionOS : POSITION;
-                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct Varyings
             {
-                float4 positionCS : SV_POSITION;
-                UNITY_VERTEX_OUTPUT_STEREO
+                float4 positionHCS : SV_POSITION;
             };
 
-            Varyings Vert(Attributes input)
+            Varyings vert(Attributes input)
             {
                 Varyings output;
-                UNITY_SETUP_INSTANCE_ID(input);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
-                output.positionCS = TransformObjectToHClip(input.positionOS.xyz);
+                output.positionHCS = TransformObjectToHClip(input.positionOS.xyz);
                 return output;
             }
 
-            half4 Frag(Varyings input) : SV_Target
+            half4 frag(Varyings input) : SV_Target
             {
-                return half4(0, 0, 0, 0);
+                return 0;
             }
 
             ENDHLSL
         }
     }
-
-    FallBack Off
 }
