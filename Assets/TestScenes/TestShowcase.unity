@@ -55545,7 +55545,7 @@ Transform:
   m_GameObject: {fileID: 1497925624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 187.67882, y: 8.5101, z: 206.28212}
+  m_LocalPosition: {x: 187.67882, y: 8.35, z: 206.28212}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76274,9 +76274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnowController
   snowMaterial: {fileID: 2100000, guid: 337788a946fe3a642b08ea67f636601f, type: 2}
-  transitionDuration: 8
-  holdDuration: 4
-  transitionCurve:
+  cycleDuration: 5
+  snowCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -76300,8 +76299,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  useManualControl: 0
-  manualSnowAmount: 0
+  pingPong: 1
 --- !u!4 &2017504603
 Transform:
   m_ObjectHideFlags: 0

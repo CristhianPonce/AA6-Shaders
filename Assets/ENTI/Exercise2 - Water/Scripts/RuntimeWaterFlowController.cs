@@ -203,11 +203,6 @@ public class RuntimeWaterFlowController : MonoBehaviour
         waterPropertyBlock.SetTexture(FlowmapId, previousFrame);
 
         waterRenderer.SetPropertyBlock(waterPropertyBlock);
-
-        if (debugPreview != null)
-        {
-            debugPreview.texture = previousFrame;
-        }
     }
 
     private bool ValidateReferences()

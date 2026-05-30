@@ -46,7 +46,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _SnowAmmount: 0.681
-    - _SnowAmount: 0.29206103
+    - _SnowAmount: 0.9306877
     - _SnowScale: 10
     m_Colors:
     - _SnowColor: {r: 1, g: 1, b: 1, a: 1}
